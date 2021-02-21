@@ -20,7 +20,16 @@ public class Movimentacao {
 
     private String descricao;
 
-    // private Conta conta;
+    @ManyToOne
+    private Conta conta;
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
 
     public Long getId() {
         return id;
