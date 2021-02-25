@@ -3,6 +3,7 @@ package com.francisco.jpa.modelo;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Movimentacao {
@@ -20,16 +21,8 @@ public class Movimentacao {
 
     private String descricao;
 
-    @ManyToOne
-    private Conta conta;
-
-    public Conta getConta() {
-        return conta;
-    }
-
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
+    @ManyToMany
+    private List<Categoria> categorias;
 
     public Long getId() {
         return id;
