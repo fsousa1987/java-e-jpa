@@ -25,7 +25,7 @@ public class TestaRelacionamento {
         movimentacao.setDescricao("Churrascaria");
         movimentacao.setValor(new BigDecimal("200.0"));
         movimentacao.setTipoMovimentacao(TipoMovimentacao.ENTADA);
-        movimentacao.setConta(conta);
+//        movimentacao.setConta(conta);
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("contas");
         EntityManager em = emf.createEntityManager();
