@@ -24,12 +24,31 @@ public class Movimentacao {
     @ManyToMany
     private List<Categoria> categorias;
 
+    @ManyToOne
+    private Conta conta;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public BigDecimal getValor() {
