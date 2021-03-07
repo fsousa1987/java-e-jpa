@@ -1,6 +1,7 @@
 package com.francisco.jpa.modelo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "conta")
@@ -9,10 +10,17 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Integer agencia;
+
     private Integer numero;
+
     private String titular;
+
     private Double saldo;
+    
+    @OneToMany
+    private List<Movimentacao> movimentacoes;
 
     public Double getSaldo() {
         return saldo;
@@ -52,5 +60,9 @@ public class Conta {
 
     public void setTitular(String titular) {
         this.titular = titular;
+    }
+
+    public List<Movimentacao> getMovimentacoes() {
+        return movimentacoes;
     }
 }
