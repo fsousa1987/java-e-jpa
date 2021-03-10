@@ -19,7 +19,7 @@ public class Conta {
 
     private Double saldo;
     
-    @OneToMany(mappedBy = "conta")
+    @OneToMany(mappedBy = "conta", fetch = FetchType.EAGER)
     private List<Movimentacao> movimentacoes;
 
     public Double getSaldo() {
