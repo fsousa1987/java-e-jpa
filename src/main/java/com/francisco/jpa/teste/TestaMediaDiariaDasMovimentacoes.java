@@ -3,7 +3,7 @@ package com.francisco.jpa.teste;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 import java.util.List;
 
 public class TestaMediaDiariaDasMovimentacoes {
@@ -13,15 +13,17 @@ public class TestaMediaDiariaDasMovimentacoes {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("contas");
         EntityManager em = emf.createEntityManager();
 
-        String jpql = "select avg(m.valor) from Movimentacao m group by day(m.data), month(m.data), year(m.data)";
+        String jpql = "select avg(m.valor), day(m.data), month(m.data) " +
+                "from Movimentacao m group by day(m.data), month(m.data), year(m.data)";
 
-        TypedQuery<Double> query = em.createQuery(jpql, Double.class);
-        List<Double> mediaDasMovimentacoes = query.getResultList();
+        Query query = em.createQuery(jpql);
+        @SuppressWarnings("unchecked") List<Object[]> mediaDasMovimentacoes = query.getResultList();
 
-        for (double media :
+        for (Object[] resultado :
              mediaDasMovimentacoes) {
 
-            System.out.println("A média das movimentações é: " + media);
+            System.out.println("A média das movimentações do dia " + resultado[1] + "/"
+                    + resultado[2] + " é: " + resultado[0]);
         }
     }
 }
