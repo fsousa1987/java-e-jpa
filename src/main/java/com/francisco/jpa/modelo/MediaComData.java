@@ -2,9 +2,9 @@ package com.francisco.jpa.modelo;
 
 public class MediaComData {
 
-    private Double valor;
-    private Integer dia;
-    private Integer mes;
+    private final Double valor;
+    private final Integer dia;
+    private final Integer mes;
 
     public MediaComData(Double valor, Integer dia, Integer mes) {
         this.valor = valor;
