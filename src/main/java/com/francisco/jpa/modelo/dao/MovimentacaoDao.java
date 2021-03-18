@@ -1,6 +1,7 @@
 package com.francisco.jpa.modelo.dao;
 
 import com.francisco.jpa.modelo.MediaComData;
+import com.francisco.jpa.modelo.Movimentacao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -13,6 +14,27 @@ public class MovimentacaoDao {
 
     public MovimentacaoDao(EntityManager em) {
         this.em = em;
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    public List<Movimentacao> getMovimentacoesFiltradasPorData(Integer dia, Integer mes, Integer ano) {
+
+        String sql = "select m from Movimentacao m where";
+
+        if (dia != null) {
+            sql += " day(m.data) = :pDia";
+        }
+
+        if (mes != null) {
+            sql += " and month(m.data) = :pMes";
+        }
+
+        if (ano != null) {
+            //noinspection UnusedAssignment
+            sql += " and year(m.data) = :pAno";
+        }
+
+        return null;
     }
 
     public List<MediaComData> getMediaDiariaDasMovimentacoes() {
