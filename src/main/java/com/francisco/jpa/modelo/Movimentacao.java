@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NamedQuery(name = "mediaDiariaMovimentacoes",
+        query = "select new com.francisco.jpa.modelo.MediaComData(avg(m.valor), day(m.data), month(m.data)) " +
+                "from Movimentacao m group by day(m.data), month(m.data), year(m.data)")
+
 @Entity
 public class Movimentacao {
 
